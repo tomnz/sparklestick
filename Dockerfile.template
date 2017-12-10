@@ -1,0 +1,21 @@
+# Docker template image for running sparklestick as a resin.io container
+
+# Based on the *slim* Go 1.x image
+FROM resin/%%RESIN_MACHINE_NAME%%-golang:1-slim
+
+# Install deps
+#RUN apt-get update && apt-get install -yq && \
+#  apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN go get -u github.com/golang/dep/...
+
+# Switch on systemd init system in container - allows improved resin.io management
+ENV INITSYSTEM on
+
+COPY . /go/src/github.com/tomnz/sparklestick/
+WORKDIR /go/src/github.com/tomnz/sparklestick/cmd/sparklestick
+
+RUN dep ensure
+
+# Build and run sparklestick
+RUN go build -tags=pihardware
+CMD ./sparklestick -config=/data/sparklestick.json

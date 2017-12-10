@@ -1,0 +1,16 @@
+
+[[constraint]]
+  name = "periph.io/x/periph"
+  version = "2.0.0"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/lucasb-eyer/go-colorful"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/nsf/termbox-go"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/tomnz/scroll-phat-hd-go"
