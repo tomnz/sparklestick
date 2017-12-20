@@ -25,10 +25,6 @@ func New(w, h int, config *Config) *Candle {
 	for y := range values {
 		values[y] = make([]float32, w)
 	}
-	next := make([][]float32, h)
-	for y := range next {
-		next[y] = make([]float32, w)
-	}
 	outBuf := make([][]byte, h)
 	for y := range outBuf {
 		outBuf[y] = make([]byte, w)
@@ -151,7 +147,7 @@ func (c *Candle) Button3() {
 }
 
 type btn1 struct {
-	searchWidth  float32
+	searchWidth,
 	baseIgnition float32
 }
 
