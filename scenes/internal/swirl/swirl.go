@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// Swirl implements the swirl effect.
 type Swirl struct {
 	w, h   float64 // Converting to float64 helps later
 	config *Config
@@ -19,6 +20,7 @@ type Swirl struct {
 	outBuf [][]byte
 }
 
+// New instantiates a new Swirl.
 func New(w, h int, config *Config) *Swirl {
 	values := make([][]float32, h)
 	for y := range values {
@@ -38,16 +40,19 @@ func New(w, h int, config *Config) *Swirl {
 	}
 }
 
+// Config defines the configuration that the effect accepts.
 type Config struct {
 	Btn1Config int `json:"btn1Config"`
 	Btn2Config int `json:"btn2Config"`
 	Btn3Config int `json:"btn3Config"`
 }
 
+// DefaultConfig returns the default configuration for the effect.
 func DefaultConfig() Config {
 	return Config{}
 }
 
+// Render returns the result of rendering the effect with the given time constraints.
 func (s *Swirl) Render(total, elapsed time.Duration) [][]byte {
 	cfgA := btn1Configs[s.config.Btn1Config]
 	cfgB := btn2Configs[s.config.Btn2Config]
@@ -88,14 +93,17 @@ func (s *Swirl) Render(total, elapsed time.Duration) [][]byte {
 	return s.outBuf
 }
 
+// Button1 handles a press of button 1.
 func (s *Swirl) Button1() {
 	s.config.Btn1Config = (s.config.Btn1Config + 1) % len(btn1Configs)
 }
 
+// Button2 handles a press of button 2.
 func (s *Swirl) Button2() {
 	s.config.Btn2Config = (s.config.Btn2Config + 1) % len(btn2Configs)
 }
 
+// Button3 handles a press of button 3.
 func (s *Swirl) Button3() {
 	s.config.Btn3Config = (s.config.Btn3Config + 1) % len(btn3Configs)
 }

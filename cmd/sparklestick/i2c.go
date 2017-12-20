@@ -6,9 +6,9 @@ import (
 	"log"
 
 	"github.com/tomnz/button-shim-go"
+	"github.com/tomnz/scroll-phat-hd-go"
 	"github.com/tomnz/sparklestick/runner"
 	"github.com/tomnz/sparklestick/scenes"
-	"github.com/tomnz/scroll-phat-hd-go"
 	"periph.io/x/periph/conn/i2c/i2creg"
 	"periph.io/x/periph/host"
 )

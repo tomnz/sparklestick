@@ -6,6 +6,7 @@ import (
 	"time"
 )
 
+// Candle implements the candle effect.
 type Candle struct {
 	w, h   int
 	config *Config
@@ -20,6 +21,7 @@ type Candle struct {
 	outBuf [][]byte
 }
 
+// New instantiates a new Candle.
 func New(w, h int, config *Config) *Candle {
 	values := make([][]float32, h)
 	for y := range values {
@@ -39,16 +41,19 @@ func New(w, h int, config *Config) *Candle {
 	}
 }
 
+// Config defines the configuration that the effect accepts.
 type Config struct {
 	Btn1Config int `json:"btn1Config"`
 	Btn2Config int `json:"btn2Config"`
 	Btn3Config int `json:"btn3Config"`
 }
 
+// DefaultConfig returns the default configuration for the effect.
 func DefaultConfig() Config {
 	return Config{}
 }
 
+// Render returns the result of rendering the effect with the given time constraints.
 func (c *Candle) Render(total, elapsed time.Duration) [][]byte {
 	stepAmt := elapsed.Seconds()
 	c.stepWave += rand.Float64() * stepAmt
@@ -134,14 +139,17 @@ func (c *Candle) getPixel(x, y float32) float32 {
 	return (c.values[yInt][xInt] * (1.0 - f)) + (c.values[yInt][next] * f)
 }
 
+// Button1 handles a press of button 1.
 func (c *Candle) Button1() {
 	c.config.Btn1Config = (c.config.Btn1Config + 1) % len(btn1Configs)
 }
 
+// Button2 handles a press of button 2.
 func (c *Candle) Button2() {
 	c.config.Btn2Config = (c.config.Btn2Config + 1) % len(btn2Configs)
 }
 
+// Button3 handles a press of button 3.
 func (c *Candle) Button3() {
 	c.config.Btn3Config = (c.config.Btn3Config + 1) % len(btn3Configs)
 }
