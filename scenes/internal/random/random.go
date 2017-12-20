@@ -95,9 +95,6 @@ type btn2 struct {
 	newRate float64
 }
 
-type btn3 struct {
-}
-
 var (
 	btn1Configs = []*btn1{
 		{
@@ -121,9 +118,5 @@ var (
 		{
 			newRate: 0.12,
 		},
-	}
-
-	btn3Configs = []*btn3{
-		{},
 	}
 )

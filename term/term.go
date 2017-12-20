@@ -15,7 +15,6 @@ type Term struct {
 	buffer     [][]byte
 	brightness byte
 	exit       chan<- bool
-	pixel      termbox.Attribute
 
 	handlerA,
 	handlerB,
