@@ -7,6 +7,7 @@ import (
 	"github.com/tomnz/sparklestick/scenes/internal/candle"
 	"github.com/tomnz/sparklestick/scenes/internal/random"
 	"github.com/tomnz/sparklestick/scenes/internal/spread"
+	"github.com/tomnz/sparklestick/scenes/internal/swirl"
 )
 
 // ConfigVersion defines the configuration version for this sparklestick binary. This value
@@ -23,6 +24,7 @@ type Config struct {
 	Candle candle.Config `json:"candle"`
 	Random random.Config `json:"random"`
 	Spread spread.Config `json:"spread"`
+	Swirl  swirl.Config  `json:"swirl"`
 
 	MinFrameInterval time.Duration `json:"minFrameInterval"`
 	ShowFPS          bool          `json:"showFps"`
