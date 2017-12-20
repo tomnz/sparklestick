@@ -6,7 +6,6 @@ import (
 
 	"github.com/tomnz/sparklestick/scenes/internal/candle"
 	"github.com/tomnz/sparklestick/scenes/internal/random"
-	"github.com/tomnz/sparklestick/scenes/internal/spread"
 	"github.com/tomnz/sparklestick/scenes/internal/swirl"
 )
 
@@ -23,7 +22,6 @@ type Config struct {
 
 	Candle candle.Config `json:"candle"`
 	Random random.Config `json:"random"`
-	Spread spread.Config `json:"spread"`
 	Swirl  swirl.Config  `json:"swirl"`
 
 	MinFrameInterval time.Duration `json:"minFrameInterval"`
@@ -39,7 +37,6 @@ func DefaultConfig() *Config {
 		Scene:            "candle",
 		Candle:           candle.DefaultConfig(),
 		Random:           random.DefaultConfig(),
-		Spread:           spread.DefaultConfig(),
 		MinFrameInterval: time.Millisecond * 10, // Max out at 100FPS
 		ShowFPS:          true,
 	}
