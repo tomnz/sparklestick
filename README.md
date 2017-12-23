@@ -5,6 +5,8 @@
 
 Self-contained LED effects for the Raspberry Pi Zero, written in Go.
 
+[![sparklestick](https://github.com/tomnz/sparklestick/wiki/images/scene-random-small.gif)]
+
 ## Overview
 
 Pair a Raspberry Pi Zero with a couple of other pieces of hardware, and create a tiny self-contained sparkle machine not much larger than a stick of gum. You'll need the following items:
@@ -61,7 +63,7 @@ You can use `sparklestick` as-is "out of the box", but a lot of the fun comes fr
 - Create a new package in `/scenes/internal`. Mimic a simple existing scene such as `random`.
 - Describe any configuration that you want to persist.
 - Create a scene struct that holds any state you need for the scene.
-- Implement `Render`. Obviously this is where the action happens!
+- Implement `Render`. Obviously this is where the action happens! You should aim to have the animation update based on the `elapsed` duration, so it can scale to different frame rates.
 - Handle button presses if desired (typically updating the config). Follow the pattern from an existing scene.
 - Add your config to the main struct in `/scenes/config.go`.
 - Add a `Type` for your scene to `/scenes/scene.go`, and reference it in `Types` and `GetScenes()`.
