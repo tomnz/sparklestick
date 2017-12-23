@@ -5,7 +5,7 @@
 
 Self-contained LED effects for the Raspberry Pi Zero, written in Go.
 
-[![sparklestick](https://github.com/tomnz/sparklestick/wiki/images/scene-random-small.gif)]
+![sparklestick](https://github.com/tomnz/sparklestick/wiki/images/scene-random-small.gif)
 
 ## Overview
 
